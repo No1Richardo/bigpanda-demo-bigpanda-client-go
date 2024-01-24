@@ -1,3 +1,3 @@
-module github.com/hashicorp-demoapp/hashicups-client-go
+module github.com/bigpanda-demo-bigpanda-client-go
 
 go 1.13
