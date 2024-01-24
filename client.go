@@ -7,59 +7,32 @@ import (
 	"time"
 )
 
-// HostURL - Default Hashicups URL
-const HostURL string = "http://localhost:19090"
+const BigPandaURL string = "https://api.bigpanda.io/"
 
 // Client -
 type Client struct {
-	HostURL    string
 	HTTPClient *http.Client
 	Token      string
 	Auth       AuthStruct
 }
 
-// AuthStruct -
-type AuthStruct struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
 // AuthResponse -
-type AuthResponse struct {
-	UserID   int    `json:"user_id`
-	Username string `json:"username`
+type AuthStruct struct {
 	Token    string `json:"token"`
 }
 
 // NewClient -
-func NewClient(host, username, password *string) (*Client, error) {
+func NewClient(host) (*Client, error) {
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
-		// Default Hashicups URL
-		HostURL: HostURL,
+		// Default BigPanda URL
+		BigPandaURL: BigPandaURL,
 	}
 
 	if host != nil {
-		c.HostURL = *host
+		c.BigPandaURL = *host
 	}
-
-	// If username or password not provided, return empty client
-	if username == nil || password == nil {
-		return &c, nil
-	}
-
-	c.Auth = AuthStruct{
-		Username: *username,
-		Password: *password,
-	}
-
-	ar, err := c.SignIn()
-	if err != nil {
-		return nil, err
-	}
-
-	c.Token = ar.Token
-
+	
 	return &c, nil
 }
 
