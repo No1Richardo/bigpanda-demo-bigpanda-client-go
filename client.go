@@ -13,7 +13,7 @@ const BigPandaURL string = "https://api.bigpanda.io/"
 type Client struct {
 	BigPandaURL	string
 	HTTPClient *http.Client
-	Token      string
+	Token      string 
 }
 
 
