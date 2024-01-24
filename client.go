@@ -14,16 +14,12 @@ type Client struct {
 	BigPandaURL	string
 	HTTPClient *http.Client
 	Token      string
-	Auth       AuthStruct
 }
 
-// AuthResponse -
-type AuthStruct struct {
-	Token    string `json:"token"`
-}
+
 
 // NewClient -
-func NewClient(host) (*Client, error) {
+func NewClient(host, token) (*Client, error) {
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 		// Default BigPanda URL
@@ -32,6 +28,10 @@ func NewClient(host) (*Client, error) {
 
 	if host != nil {
 		c.BigPandaURL = *host
+	}
+
+	if token != nil {
+		c.Token = *token
 	}
 	
 	return &c, nil
