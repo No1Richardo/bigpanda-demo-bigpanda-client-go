@@ -9,7 +9,7 @@ import (
 
 // GetIncidentTags - Returns list of incidenttags (no auth required)
 func (c *Client) GetIncidentTags() ([]IncidentTag, error) {
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/incidents/tags/definitions", c.HostURL), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/incidents/tags/definitions", c.BigPandaURL), nil)
 	if err != nil {
 		return nil, err
 	}
