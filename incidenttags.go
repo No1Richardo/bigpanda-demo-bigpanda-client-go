@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GetCoffees - Returns list of incidenttags (no auth required)
+// GetIncidentTags - Returns list of incidenttags (no auth required)
 func (c *Client) GetIncidentTags() ([]IncidentTag, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/incidents/tags/definitions", c.HostURL), nil)
 	if err != nil {
@@ -25,5 +25,5 @@ func (c *Client) GetIncidentTags() ([]IncidentTag, error) {
 		return nil, err
 	}
 
-	return coffees, nil
+	return incidenttags, nil
 }
