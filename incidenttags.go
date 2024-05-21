@@ -8,7 +8,7 @@ import (
 )
 
 // GetCoffees - Returns list of incidenttags (no auth required)
-func (c *Client) GetIncidentTags() ([]Coffee, error) {
+func (c *Client) GetIncidentTags() ([]IncidentTag, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/incidents/tags/definitions", c.HostURL), nil)
 	if err != nil {
 		return nil, err
@@ -19,8 +19,8 @@ func (c *Client) GetIncidentTags() ([]Coffee, error) {
 		return nil, err
 	}
 
-	coffees := []Coffee{}
-	err = json.Unmarshal(body, &coffees)
+	incidenttags := []IncidentTag{}
+	err = json.Unmarshal(body, &incidenttags)
 	if err != nil {
 		return nil, err
 	}
