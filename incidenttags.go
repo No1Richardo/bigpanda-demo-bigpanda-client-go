@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strings"
 )
 
 // GetIncidentTags - Returns list of incidenttags (no auth required)
