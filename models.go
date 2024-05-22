@@ -8,7 +8,7 @@ type IncidentTag struct {
 	Type        		string `json:"type"`
 	Active     			bool `json:"active"`
 	Deleted    			bool `json:"deleted"`
-	CanManualInput     	bool `json:"canManualInput"`
+	CanManualInput     	bool `json:"can_manual_input"`
 	CreatedAt      		int64 `json:"created_at"`
 	CreatedBy        	string `json:"created_by"`
 	UpdatedAt      		int64 `json:"updated_at"`
