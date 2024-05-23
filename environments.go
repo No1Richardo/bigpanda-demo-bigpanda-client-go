@@ -29,7 +29,7 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 
 // GetOrder - Returns a specifc order
 func (c *Client) GetOrder(orderID string) (*Order, error) {
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/environments/%s", c.HostURL, orderID), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/environments/%s", c.BigPandaURL, orderID), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
 		return nil, err
 	}
 
-	req, err := http.NewRequest("POST", fmt.Sprintf("%s/resources/v2.0/environments", c.HostURL), strings.NewReader(string(rb)))
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/resources/v2.0/environments", c.BigPandaURL), strings.NewReader(string(rb)))
 	if err != nil {
 		return nil, err
 	}
