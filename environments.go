@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // GetEnvironments - Returns list of environments
@@ -51,12 +53,14 @@ func (c *Client) GetOrder(orderID string) (*Order, error) {
 
 
 // CreateOrder - Create new order
-func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
+func (c *Client) CreateOrder(orderItems []OrderItem, context.Context ctx) (*Order, error) {
 	rb, err := json.Marshal(orderItems)
 	if err != nil {
 		return nil, err
 	}
 
+	tflog.Info(ctx, "Creating a new environment in the client")
+	
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/resources/v2.0/environments", c.BigPandaURL), strings.NewReader(string(rb)))
 	if err != nil {
 		return nil, err
