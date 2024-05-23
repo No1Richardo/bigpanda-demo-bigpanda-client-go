@@ -1,4 +1,4 @@
-vipackage bigpanda
+package bigpanda
 
 import (
 	"encoding/json"
