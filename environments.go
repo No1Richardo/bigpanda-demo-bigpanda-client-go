@@ -58,7 +58,6 @@ func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
 	if err != nil {
 		return nil, err
 	}
-	tflog.Info("In the client, making the request")
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/resources/v2.0/environments", c.BigPandaURL), strings.NewReader(string(rb)))
 	if err != nil {
