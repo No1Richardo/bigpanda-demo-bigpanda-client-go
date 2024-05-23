@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // GetEnvironments - Returns list of environments
@@ -56,6 +58,7 @@ func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
 	if err != nil {
 		return nil, err
 	}
+	tflog.Info(ctx, "In the client, making the request")
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/resources/v2.0/environments", c.BigPandaURL), strings.NewReader(string(rb)))
 	if err != nil {
