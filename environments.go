@@ -1,4 +1,4 @@
-package bigpanda
+vipackage bigpanda
 
 import (
 	"encoding/json"
@@ -28,7 +28,7 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 }
 
 // CreateEnvironment - Create new environment
-func (c *Client) CreateEnvironment(environmentItems []EnvironmentItem, authToken *string) (*Order, error) {
+func (c *Client) CreateEnvironment(environmentItems []EnvironmentItem) (*Environment, error) {
 	rb, err := json.Marshal(environmentItems)
 	if err != nil {
 		return nil, err
