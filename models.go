@@ -16,14 +16,14 @@ type IncidentTag struct {
 }
 
 // Order -
-type Order struct {
+type Environment struct {
 	ID    int         `json:"id,omitempty"`
 	Items []OrderItem `json:"items,omitempty"`
 }
 
 // OrderItem -
-type OrderItem struct {
-	Environment   Coffee `json:"environment"`
+type EnvironmentItem struct {
+	Environment  Environment `json:"environment"`
 }
 
 // Environment -
