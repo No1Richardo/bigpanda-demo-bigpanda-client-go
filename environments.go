@@ -26,3 +26,29 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 
 	return environments, nil
 }
+
+// CreateEnvironment - Create new environment
+func (c *Client) CreateEnvironment(environmentItems []EnvironmentItem, authToken *string) (*Order, error) {
+	rb, err := json.Marshal(environmentItems)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/resources/v2.0/environments", c.HostURL), strings.NewReader(string(rb)))
+	if err != nil {
+		return nil, err
+	}
+
+	body, err := c.doRequest(req, authToken)
+	if err != nil {
+		return nil, err
+	}
+
+	environment := Environment{}
+	err = json.Unmarshal(body, &environment)
+	if err != nil {
+		return nil, err
+	}
+
+	return &environment, nil
+}
