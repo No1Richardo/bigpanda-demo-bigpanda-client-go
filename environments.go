@@ -27,6 +27,28 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 	return environments, nil
 }
 
+// GetOrder - Returns a specifc order
+func (c *Client) GetOrder(orderID string) (*Order, error) {
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/resources/v2.0/environments/%s", c.HostURL, orderID), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	body, err := c.doRequest(req, authToken)
+	if err != nil {
+		return nil, err
+	}
+
+	order := Order{}
+	err = json.Unmarshal(body, &order)
+	if err != nil {
+		return nil, err
+	}
+
+	return &order, nil
+}
+
+
 // CreateOrder - Create new order
 func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
 	rb, err := json.Marshal(orderItems)
