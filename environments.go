@@ -53,7 +53,7 @@ func (c *Client) GetOrder(orderID string) (*Order, error) {
 
 
 // CreateOrder - Create new order
-func (c *Client) CreateOrder(orderItems []OrderItem, context.Context ctx) (*Order, error) {
+func (c *Client) CreateOrder(orderItems []OrderItem, ctx Context) (*Order, error) {
 	rb, err := json.Marshal(orderItems)
 	if err != nil {
 		return nil, err
