@@ -28,7 +28,7 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 }
 
 // CreateOrder - Create new order
-func (c *Client) CreateOrder(orderItems []OrderItem, authToken *string) (*Order, error) {
+func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
 	rb, err := json.Marshal(orderItems)
 	if err != nil {
 		return nil, err
