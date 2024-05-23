@@ -15,10 +15,10 @@ type IncidentTag struct {
 	UpdatedBy        	string `json:"updated_by"`
 }
 
-// Order -
-type Environment struct {
+// Environments -
+type Environments struct {
 	ID    int         `json:"id,omitempty"`
-	Items []OrderItem `json:"items,omitempty"`
+	Items []EnvironmentItem `json:"items,omitempty"`
 }
 
 // OrderItem -
