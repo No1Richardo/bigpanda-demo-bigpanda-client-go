@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-
-	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // GetEnvironments - Returns list of environments
