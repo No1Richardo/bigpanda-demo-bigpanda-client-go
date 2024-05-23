@@ -2,8 +2,10 @@ package bigpanda
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 // GetEnvironments - Returns list of environments
@@ -34,7 +36,7 @@ func (c *Client) GetOrder(orderID string) (*Order, error) {
 		return nil, err
 	}
 
-	body, err := c.doRequest(req, authToken)
+	body, err := c.doRequest(req, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +63,7 @@ func (c *Client) CreateOrder(orderItems []OrderItem) (*Order, error) {
 		return nil, err
 	}
 
-	body, err := c.doRequest(req, authToken)
+	body, err := c.doRequest(req, nil)
 	if err != nil {
 		return nil, err
 	}
