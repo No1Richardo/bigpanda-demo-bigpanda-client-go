@@ -15,6 +15,17 @@ type IncidentTag struct {
 	UpdatedBy        	string `json:"updated_by"`
 }
 
+// Order -
+type Order struct {
+	ID    int         `json:"id,omitempty"`
+	Items []OrderItem `json:"items,omitempty"`
+}
+
+// OrderItem -
+type OrderItem struct {
+	Environment   Coffee `json:"environment"`
+}
+
 // Environment -
 type Environment struct {
 	ID          		string `json:"id"`
