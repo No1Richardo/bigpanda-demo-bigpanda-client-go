@@ -27,9 +27,9 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 	return environments, nil
 }
 
-// CreateEnvironment - Create new environment
-func (c *Client) CreateEnvironment(environmentItems []EnvironmentItem) (*Environment, error) {
-	rb, err := json.Marshal(environmentItems)
+// CreateOrder - Create new order
+func (c *Client) CreateOrder(orderItems []OrderItem, authToken *string) (*Order, error) {
+	rb, err := json.Marshal(orderItems)
 	if err != nil {
 		return nil, err
 	}
@@ -44,11 +44,11 @@ func (c *Client) CreateEnvironment(environmentItems []EnvironmentItem) (*Environ
 		return nil, err
 	}
 
-	environment := Environment{}
-	err = json.Unmarshal(body, &environment)
+	order := Order{}
+	err = json.Unmarshal(body, &order)
 	if err != nil {
 		return nil, err
 	}
 
-	return &environment, nil
+	return &order, nil
 }
